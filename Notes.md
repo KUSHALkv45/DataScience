@@ -1,4 +1,4 @@
-***Data Science Requirement***
+### Data Science Requirement
 
 Ah — got it 👍
 You’re asking **why data science is needed** — i.e., **the real-life requirement or purpose of data science as a field**, not the skills to learn it.
@@ -88,7 +88,8 @@ Without data science, most of these operations would rely purely on intuition �
 ---
 
 
-***Excellent — this is a **core concept in model evaluation and tuning**, especially in classification tasks.***
+### Excellent — this is a core concept in model evaluation and tuning, especially in classification tasks. 
+
 
 Let’s go step-by-step 👇
 
