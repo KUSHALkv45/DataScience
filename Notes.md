@@ -388,7 +388,7 @@ That’s literally KNN.
 
 
 
-#### Logistic Regression:
+#### 🎯 Logistic Regression:
 
 - In Linear R we try to fit a line which is closer to all points or has less error RMSE .
 - But when we want to Classify into classes like a event   for example based on cost is the food item tasty or not.
