@@ -395,5 +395,195 @@ That’s literally KNN.
 - Linear Reg gives us values from -inf to +inf but we can't classify them based on values in this range
 - So Here a sigmoid function is used and applied on the output which makes the values in range of [0,1]  sigmoid function is $\frac{1}{1 + e^{-x}}$
 - So now the range problem is solved but how to cal the loss or errorrate if we do RMSE  it will be difference of prob's so the error can't be very significant
-- So we use log(probabilty) as error on one point .
-- 
+- So we use log(probabilty) as error on one point . Consider 2 classes , then loss will be for class_1 - log(p) and for point of class_2 - log(1-p) summation 
+Perfect — that’s a really insightful question 👏
+
+You’re absolutely right about **binary logistic regression**, and the question “what happens when we have more than two classes” leads directly to **multiclass logistic regression**, commonly called **Softmax Regression** or **Multinomial Logistic Regression**.
+
+Let’s go step by step 👇
+
+---
+
+### 🧠 1️⃣ Binary Logistic Regression — recap
+
+For **two classes**, say `0` and `1`, we model:
+
+[
+P(y=1|x) = \frac{1}{1 + e^{-z}} \quad \text{where } z = w^T x + b
+]
+
+Then:
+
+* If ( P(y=1|x) > 0.5 ), predict class **1**
+* Else, predict class **0**
+
+---
+
+### 🧠 2️⃣ Multiclass case — more than 2 classes
+
+Suppose you have **k classes** (e.g., 3 classes: Cat, Dog, Horse 🐱🐶🐴).
+
+Now we can’t just have one probability — we need **a probability for each class**:
+[
+P(y = j | x) \text{ for } j = 1, 2, ..., k
+]
+
+To do that:
+
+* Each class gets its own **weight vector** ( w_j ) and bias ( b_j )
+* We compute a score ( z_j = w_j^T x + b_j ) for each class.
+
+Then we apply the **softmax function** to turn those scores into probabilities:
+
+[
+P(y=j|x) = \frac{e^{z_j}}{\sum_{k=1}^{K} e^{z_k}}
+]
+
+---
+
+### ⚙️ 3️⃣ How prediction works
+
+* Compute all ( z_j )
+* Convert them to probabilities using **softmax**
+* Pick the class with the **highest probability**
+
+[
+\hat{y} = \arg\max_j P(y=j|x)
+]
+
+---
+
+### 🧩 4️⃣ Example
+
+Say you have 3 classes and for some input (x):
+
+```
+z1 = 2.0
+z2 = 1.0
+z3 = 0.1
+```
+
+Then:
+
+[
+P_1 = \frac{e^{2}}{e^{2}+e^{1}+e^{0.1}} \approx 0.65
+]
+[
+P_2 = 0.24, \quad P_3 = 0.09
+]
+
+✅ The model predicts **class 1**, since it has the highest probability.
+
+---
+
+### 📈 5️⃣ Training
+
+Just like binary logistic regression, we use **cross-entropy loss**, but generalized for multiple classes:
+
+[
+L = -\sum_{j=1}^{K} y_j \log P(y=j|x)
+]
+
+(where (y_j) is a one-hot encoded label)
+
+---
+
+### 💡 Summary
+
+| Case                   | Activation | Probabilities Sum      | Decision Rule                         |
+| ---------------------- | ---------- | ---------------------- | ------------------------------------- |
+| Binary (2 classes)     | Sigmoid    | 1 (since p + (1-p))    | (p > 0.5) → Class 1                   |
+| Multiclass (K classes) | Softmax    | 1 (sum of all classes) | Choose class with highest probability |
+
+---
+Excellent follow-up — this is *the* key idea behind how multiclass logistic regression works 👏
+
+Let’s break that line —
+
+> “Each class gets its own weight vector”
+
+— into something very clear and visual.
+
+---
+
+### 🧩 Let’s start with binary logistic regression first
+
+If you only have **2 classes** (say, `Cat` 🐱 and `Dog` 🐶), you compute **one score**:
+
+[
+z = w^T x + b
+]
+
+* (x) → your input features (say [height, weight, color_intensity])
+* (w) → the weights that tell how important each feature is for predicting "Dog"
+* (b) → bias term
+
+Then we squash that single number with sigmoid → ( p = \frac{1}{1+e^{-z}} )
+→ gives you **probability of Dog** (and 1–p is Cat).
+
+✅ Only one ( w ) vector, because only one decision boundary between Cat vs Dog.
+
+---
+
+### 🧠 Now in multiclass (say 3 classes — Cat 🐱, Dog 🐶, Horse 🐴)
+
+We can’t describe all 3 with a single line in the feature space.
+So we give **each class its own line**, i.e., its own set of weights.
+
+---
+
+### 🧮 Mathematically:
+
+Let the number of features = `n`
+Let the number of classes = `k`
+
+Then:
+
+* ( W ) = matrix of size **(n × k)**
+* ( b ) = vector of size **(k)**
+
+For each class `j` (from 1 to k):
+[
+z_j = w_j^T x + b_j
+]
+
+Here:
+
+* ( w_j ) = weight vector **for class j**
+* ( b_j ) = bias for class j
+* ( z_j ) = raw score (logit) of how strongly input (x) belongs to class j
+
+Then we apply softmax:
+[
+P(y=j|x) = \frac{e^{z_j}}{\sum_{k=1}^{K} e^{z_k}}
+]
+
+---
+
+### 🔍 Intuition
+
+Think of each **class’s weight vector** ( w_j ) as a “detector” for that class:
+
+* ( w_{\text{cat}} ) reacts strongly if features look like a cat
+* ( w_{\text{dog}} ) reacts strongly if features look like a dog
+* ( w_{\text{horse}} ) reacts strongly if features look like a horse
+
+During training, the model **learns each ( w_j )** so that the correct class produces the highest ( z_j ) value for its samples.
+
+---
+
+### 🧠 Visual intuition (simplified)
+
+| Class | Weight Vector ( w_j ) | What it learns to detect               |
+| ----- | --------------------- | -------------------------------------- |
+| Cat   | [0.9, -0.3, 0.2]      | High when "small, light-colored, soft" |
+| Dog   | [-0.4, 0.8, 0.1]      | High when "medium, brown, furry"       |
+| Horse | [-0.5, -0.2, 1.3]     | High when "large, dark, long-haired"   |
+
+Each of those weight vectors points in a direction in feature space that “activates” for that class.
+
+---
+
+
+
+
