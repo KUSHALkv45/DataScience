@@ -466,8 +466,13 @@ z3 = 0.1
 Then:
 
 
+\[
 P_1 = \frac{e^{2}}{e^{2}+e^{1}+e^{0.1}} \approx 0.65
+\]
+
+\[
 P_2 = 0.24, \quad P_3 = 0.09
+\]
 
 
 ✅ The model predicts **class 1**, since it has the highest probability.
@@ -479,7 +484,10 @@ P_2 = 0.24, \quad P_3 = 0.09
 Just like binary logistic regression, we use **cross-entropy loss**, but generalized for multiple classes:
 
 
+
+\[
 L = -\sum_{j=1}^{K} y_j \log P(y=j|x)
+\]
 
 
 (where (y_j) is a one-hot encoded label)
@@ -508,9 +516,9 @@ Let’s break that line —
 
 If you only have **2 classes** (say, `Cat` 🐱 and `Dog` 🐶), you compute **one score**:
 
-[
+
 z = w^T x + b
-]
+
 
 * (x) → your input features (say [height, weight, color_intensity])
 * (w) → the weights that tell how important each feature is for predicting "Dog"
@@ -541,9 +549,9 @@ Then:
 * ( b ) = vector of size **(k)**
 
 For each class `j` (from 1 to k):
-[
+
 z_j = w_j^T x + b_j
-]
+
 
 Here:
 
@@ -552,9 +560,11 @@ Here:
 * ( z_j ) = raw score (logit) of how strongly input (x) belongs to class j
 
 Then we apply softmax:
-[
+
+\[
 P(y=j|x) = \frac{e^{z_j}}{\sum_{k=1}^{K} e^{z_k}}
-]
+\]
+
 
 ---
 
