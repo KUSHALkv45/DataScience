@@ -386,3 +386,9 @@ You don’t know whether your neighborhood is “posh” or “average.”
 You look at **K nearest neighbors** — if most of them are rich, you call the area posh; if not, average.
 That’s literally KNN.
 
+
+
+#### Logistic Regression:
+
+- In Linear R we try to fit a line which is closer to all points or has less error RMSE .
+- 
