@@ -394,3 +394,6 @@ That’s literally KNN.
 - But when we want to Classify into classes like a event   for example based on cost is the food item tasty or not.
 - Linear Reg gives us values from -inf to +inf but we can't classify them based on values in this range
 - So Here a sigmoid function is used and applied on the output which makes the values in range of [0,1]  sigmoid function is $\frac{1}{1 + e^{-x}}$
+- So now the range problem is solved but how to cal the loss or errorrate if we do RMSE  it will be difference of prob's so the error can't be very significant
+- So we use log(probabilty) as error on one point .
+- 
