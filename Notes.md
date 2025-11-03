@@ -400,109 +400,119 @@ Perfect — that’s a really insightful question 👏
 
 You’re absolutely right about **binary logistic regression**, and the question “what happens when we have more than two classes” leads directly to **multiclass logistic regression**, commonly called **Softmax Regression** or **Multinomial Logistic Regression**.
 
-Let’s go step by step 👇
+Perfect 👍 — here’s your **entire section rewritten cleanly for GitHub Markdown**, with **all LaTeX and inline math converted** into plain Markdown + code formatting, so it renders **beautifully and correctly** on GitHub, VS Code, or any normal Markdown viewer.
 
 ---
 
-### 🧠 1️⃣ Binary Logistic Regression — recap
+```md
+## 🧠 1️⃣ Binary Logistic Regression — Recap
 
 For **two classes**, say `0` and `1`, we model:
 
-[
-P(y=1|x) = \frac{1}{1 + e^{-z}} \quad \text{where } z = w^T x + b
-]
+```
+
+P(y = 1 | x) = 1 / (1 + exp(−z))   where  z = wᵀx + b
+
+```
 
 Then:
 
-* If ( P(y=1|x) > 0.5 ), predict class **1**
-* Else, predict class **0**
+- If `P(y = 1 | x) > 0.5`, predict **class 1**
+- Else, predict **class 0**
 
 ---
 
-### 🧠 2️⃣ Multiclass case — more than 2 classes
+## 🧠 2️⃣ Multiclass Case — More than 2 Classes
 
-Suppose you have **k classes** (e.g., 3 classes: Cat, Dog, Horse 🐱🐶🐴).
+Suppose you have **k classes** (e.g., 3 classes: Cat 🐱, Dog 🐶, Horse 🐴).
 
 Now we can’t just have one probability — we need **a probability for each class**:
-[
-P(y = j | x) \text{ for } j = 1, 2, ..., k
-]
+
+```
+
+P(y = j | x)   for j = 1, 2, ..., k
+
+```
 
 To do that:
 
-* Each class gets its own **weight vector** ( w_j ) and bias ( b_j )
-* We compute a score ( z_j = w_j^T x + b_j ) for each class.
+- Each class gets its own **weight vector** `w_j` and bias `b_j`
+- We compute a score `z_j = w_jᵀx + b_j` for each class
 
 Then we apply the **softmax function** to turn those scores into probabilities:
 
-[
-P(y=j|x) = \frac{e^{z_j}}{\sum_{k=1}^{K} e^{z_k}}
-]
+```
 
----
-
-### ⚙️ 3️⃣ How prediction works
-
-* Compute all ( z_j )
-* Convert them to probabilities using **softmax**
-* Pick the class with the **highest probability**
-
-[
-\hat{y} = \arg\max_j P(y=j|x)
-]
-
----
-
-### 🧩 4️⃣ Example
-
-Say you have 3 classes and for some input (x):
+P(y = j | x) = exp(z_j) / Σ_k exp(z_k)
 
 ```
+
+---
+
+## ⚙️ 3️⃣ How Prediction Works
+
+- Compute all `z_j`
+- Convert them to probabilities using **softmax**
+- Pick the class with the **highest probability**
+
+```
+
+ŷ = argmax_j P(y = j | x)
+
+```
+
+---
+
+## 🧩 4️⃣ Example
+
+Say you have 3 classes and for some input `x`:
+
+```
+
 z1 = 2.0
 z2 = 1.0
 z3 = 0.1
+
 ```
 
 Then:
 
+```
 
-\[
-P_1 = \frac{e^{2}}{e^{2}+e^{1}+e^{0.1}} \approx 0.65
-\]
+P1 = exp(2) / (exp(2) + exp(1) + exp(0.1)) ≈ 0.65
+P2 = 0.24
+P3 = 0.09
 
-\[
-P_2 = 0.24, \quad P_3 = 0.09
-\]
+```
 
-
-✅ The model predicts **class 1**, since it has the highest probability.
+✅ The model predicts **Class 1**, since it has the highest probability.
 
 ---
 
-### 📈 5️⃣ Training
+## 📈 5️⃣ Training
 
 Just like binary logistic regression, we use **cross-entropy loss**, but generalized for multiple classes:
 
+```
 
+L = − Σ_j [ y_j * log( P(y = j | x) ) ]
 
-\[
-L = -\sum_{j=1}^{K} y_j \log P(y=j|x)
-\]
+```
 
-
-(where (y_j) is a one-hot encoded label)
+(where `y_j` is a one-hot encoded label)
 
 ---
 
-### 💡 Summary
+## 💡 Summary
 
 | Case                   | Activation | Probabilities Sum      | Decision Rule                         |
-| ---------------------- | ---------- | ---------------------- | ------------------------------------- |
-| Binary (2 classes)     | Sigmoid    | 1 (since p + (1-p))    | (p > 0.5) → Class 1                   |
-| Multiclass (K classes) | Softmax    | 1 (sum of all classes) | Choose class with highest probability |
+| ---------------------- | ----------- | ---------------------- | ------------------------------------- |
+| Binary (2 classes)     | Sigmoid     | 1 (since p + (1 − p))  | (p > 0.5) → Class 1                   |
+| Multiclass (K classes) | Softmax     | 1 (sum of all classes) | Choose class with highest probability |
 
 ---
-Excellent follow-up — this is *the* key idea behind how multiclass logistic regression works 👏
+
+Excellent follow-up — this is *the* key idea behind how **multiclass logistic regression** works 👏
 
 Let’s break that line —
 
@@ -512,85 +522,106 @@ Let’s break that line —
 
 ---
 
-### 🧩 Let’s start with binary logistic regression first
+## 🧩 Binary Logistic Regression (Simplified View)
 
-If you only have **2 classes** (say, `Cat` 🐱 and `Dog` 🐶), you compute **one score**:
+If you only have **2 classes** (say, `Cat 🐱` and `Dog 🐶`), you compute **one score**:
 
+```
 
-z = w^T x + b
+z = wᵀx + b
 
+```
 
-* (x) → your input features (say [height, weight, color_intensity])
-* (w) → the weights that tell how important each feature is for predicting "Dog"
-* (b) → bias term
+- `x` → input features (e.g., [height, weight, color_intensity])  
+- `w` → weights showing how important each feature is for predicting "Dog"  
+- `b` → bias term  
 
-Then we squash that single number with sigmoid → ( p = \frac{1}{1+e^{-z}} )
-→ gives you **probability of Dog** (and 1–p is Cat).
+Then apply the **sigmoid**:
 
-✅ Only one ( w ) vector, because only one decision boundary between Cat vs Dog.
+```
+
+p = 1 / (1 + exp(−z))
+
+```
+
+→ gives **probability of Dog**, and `1 − p` is probability of Cat.
+
+✅ Only one `w` vector, because there’s only **one decision boundary** (Cat vs Dog).
 
 ---
 
-### 🧠 Now in multiclass (say 3 classes — Cat 🐱, Dog 🐶, Horse 🐴)
+## 🧠 Multiclass Case (e.g., Cat 🐱, Dog 🐶, Horse 🐴)
 
-We can’t describe all 3 with a single line in the feature space.
-So we give **each class its own line**, i.e., its own set of weights.
+We can’t describe all 3 with a single line in feature space.  
+So we give **each class its own line** — its own set of weights.
 
 ---
 
-### 🧮 Mathematically:
+## 🧮 Mathematically
 
-Let the number of features = `n`
-Let the number of classes = `k`
+Let:
+
+- Number of features = `n`  
+- Number of classes = `k`
 
 Then:
 
-* ( W ) = matrix of size **(n × k)**
-* ( b ) = vector of size **(k)**
+```
 
-For each class `j` (from 1 to k):
+W → matrix of size (n × k)
+b → vector of size (k)
 
-z_j = w_j^T x + b_j
+```
 
+For each class `j` (1 ≤ j ≤ k):
+
+```
+
+z_j = w_jᵀx + b_j
+
+```
 
 Here:
 
-* ( w_j ) = weight vector **for class j**
-* ( b_j ) = bias for class j
-* ( z_j ) = raw score (logit) of how strongly input (x) belongs to class j
+- `w_j` → weight vector for class `j`  
+- `b_j` → bias for class `j`  
+- `z_j` → raw score (logit) of how strongly input `x` belongs to class `j`
 
-Then we apply softmax:
+Then apply softmax:
 
-\[
-P(y=j|x) = \frac{e^{z_j}}{\sum_{k=1}^{K} e^{z_k}}
-\]
+```
 
+P(y = j | x) = exp(z_j) / Σ_k exp(z_k)
 
----
-
-### 🔍 Intuition
-
-Think of each **class’s weight vector** ( w_j ) as a “detector” for that class:
-
-* ( w_{\text{cat}} ) reacts strongly if features look like a cat
-* ( w_{\text{dog}} ) reacts strongly if features look like a dog
-* ( w_{\text{horse}} ) reacts strongly if features look like a horse
-
-During training, the model **learns each ( w_j )** so that the correct class produces the highest ( z_j ) value for its samples.
+```
 
 ---
 
-### 🧠 Visual intuition (simplified)
+## 🔍 Intuition
 
-| Class | Weight Vector ( w_j ) | What it learns to detect               |
+Think of each **class’s weight vector** `w_j` as a “detector” for that class:
+
+- `w_cat` → reacts strongly if features look like a cat  
+- `w_dog` → reacts strongly if features look like a dog  
+- `w_horse` → reacts strongly if features look like a horse  
+
+During training, the model learns each `w_j` so that the correct class produces the highest `z_j` for its samples.
+
+---
+
+## 🧠 Visual Intuition (Simplified)
+
+| Class | Weight Vector (`w_j`) | What it Learns to Detect               |
 | ----- | --------------------- | -------------------------------------- |
 | Cat   | [0.9, -0.3, 0.2]      | High when "small, light-colored, soft" |
 | Dog   | [-0.4, 0.8, 0.1]      | High when "medium, brown, furry"       |
 | Horse | [-0.5, -0.2, 1.3]     | High when "large, dark, long-haired"   |
 
-Each of those weight vectors points in a direction in feature space that “activates” for that class.
+Each of those weight vectors points in a direction in feature space that **activates** for that class.
+```
 
 ---
+
 
 
 
