@@ -396,11 +396,9 @@ That’s literally KNN.
 - So Here a sigmoid function is used and applied on the output which makes the values in range of [0,1]  sigmoid function is $\frac{1}{1 + e^{-x}}$
 - So now the range problem is solved but how to cal the loss or errorrate if we do RMSE  it will be difference of prob's so the error can't be very significant
 - So we use log(probabilty) as error on one point . Consider 2 classes , then loss will be for class_1 - log(p) and for point of class_2 - log(1-p) summation 
-Perfect — that’s a really insightful question 👏
 
-You’re absolutely right about **binary logistic regression**, and the question “what happens when we have more than two classes” leads directly to **multiclass logistic regression**, commonly called **Softmax Regression** or **Multinomial Logistic Regression**.
 
-Perfect 👍 — here’s your **entire section rewritten cleanly for GitHub Markdown**, with **all LaTeX and inline math converted** into plain Markdown + code formatting, so it renders **beautifully and correctly** on GitHub, VS Code, or any normal Markdown viewer.
+[Refer LR Video] : (https://www.youtube.com/watch?v=3bvM3NyMiE0)
 
 ---
 
