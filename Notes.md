@@ -391,4 +391,6 @@ That’s literally KNN.
 #### Logistic Regression:
 
 - In Linear R we try to fit a line which is closer to all points or has less error RMSE .
-- 
+- But when we want to Classify into classes like a event   for example based on cost is the food item tasty or not.
+- Linear Reg gives us values from -inf to +inf but we can't classify them based on values in this range
+- So Here a sigmoid function is used and applied on the output which makes the values in range of [0,1]  sigmoid function is $\frac{1}{1 + e^{-x}}$
