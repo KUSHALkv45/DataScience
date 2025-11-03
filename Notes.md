@@ -465,12 +465,10 @@ z3 = 0.1
 
 Then:
 
-[
+
 P_1 = \frac{e^{2}}{e^{2}+e^{1}+e^{0.1}} \approx 0.65
-]
-[
 P_2 = 0.24, \quad P_3 = 0.09
-]
+
 
 ✅ The model predicts **class 1**, since it has the highest probability.
 
@@ -480,9 +478,9 @@ P_2 = 0.24, \quad P_3 = 0.09
 
 Just like binary logistic regression, we use **cross-entropy loss**, but generalized for multiple classes:
 
-[
+
 L = -\sum_{j=1}^{K} y_j \log P(y=j|x)
-]
+
 
 (where (y_j) is a one-hot encoded label)
 
