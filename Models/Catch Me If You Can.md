@@ -63,7 +63,7 @@ def make(train_s):
 ```
 
 - made a model on only faetures : cols = "target","day","sess","start","end","long_gap","short_gap"
-- with balanced learning for the LR model model was bad it was not working well
+- with balanced learning for the LR model model was bad it was not working well comp : acc : 73
 ``` python
 """
 
@@ -88,4 +88,29 @@ ROC AUC: 0.837684668561603
 """
 
 ```
+
+- added extra features cols = ["target","day","sess","start","end","long_gap","short_gap","fsess","lsess","danger","notDanger"]
+``` python
+"""
+Accuracy: 0.8385445821671331
+
+Confusion Matrix:
+ [[10381  2009]
+ [   10   105]]
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       1.00      0.84      0.91     12390
+           1       0.05      0.91      0.09       115
+
+    accuracy                           0.84     12505
+   macro avg       0.52      0.88      0.50     12505
+weighted avg       0.99      0.84      0.90     12505
+
+ROC AUC: 0.9518265080534793
+"""
+
+```
+model on compi : 86 % acc
         
