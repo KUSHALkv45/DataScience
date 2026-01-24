@@ -1,6 +1,16 @@
 ``` python
 
-    df = students.dropna(axis = 0 , how = 'all' ,  subset = "name" , inplace = False)
+
+    customers.drop_duplicates(subset = "email",keep = "first",inplace = True)
+
+    # subset - considers these col when given or it considers all columns
+    # keep - which one to keep -> first , last , False - removes all
+
+
+    
+
+
+     df = students.dropna(axis = 0 , how = 'all' ,  subset = "name" , inplace = False)
 
     return df
 
