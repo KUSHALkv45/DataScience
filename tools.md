@@ -38,5 +38,24 @@
     products["quantity"].fillna(0,inplace = True)
     # products.fillna(value = {col_name : value} , inplace = True)
     
+    df1 = pd.concat([df1,df2],axis = 0) , # axis = 1 -> concats horizontally i.e column wise
 
+
+     ans = weather.pivot(index = "month",columns = "city",values = "temperature")
+    # month_order = ["January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December"]
+    # ans = ans.reindex(month_order)   - returns nulls for empty months
+    return ans
+
+
+
+    df = report.melt(
+        id_vars = ["product"],
+        value_vars = ["quarter_1","quarter_2","quarter_3","quarter_4"],
+        var_name = "quarter",
+        value_name = "sales"
+    )
+    return df
+
+
+    animals[animals["weight"] > 100].sort_values(by = "weight",ascending = False)[["name"]]
 ```
