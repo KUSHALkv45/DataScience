@@ -20,4 +20,23 @@
     # inplace - as per name
 
 
+
+    students = students.rename(
+        columns = {
+            "id" : "student_id",
+            "first" : "first_name",
+            "last" : "last_name",
+            "age" : "age_in_years"
+        }
+    )
+
+
+
+    students = students.astype({"grade":int})
+
+
+    products["quantity"].fillna(0,inplace = True)
+    # products.fillna(value = {col_name : value} , inplace = True)
+    
+
 ```
