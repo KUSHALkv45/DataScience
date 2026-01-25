@@ -10,7 +10,9 @@
     
 
 
-     df = students.dropna(axis = 0 , how = 'all' ,  subset = "name" , inplace = False)
+    df = students.dropna(axis = 0 , how = 'all' ,  subset = "name" , inplace = False)
+    df["salary"].dropna().nlargest(5)
+    df["salary"].dropna().nsmallest(5)
 
     return df
 
@@ -59,4 +61,8 @@
 
 
     animals[animals["weight"] > 100].sort_values(by = "weight",ascending = False)[["name"]]
+
+
+    ★★★
+    df["avg_salary"] = df.groupby("department")["salary"].transform("mean") 
 ```
