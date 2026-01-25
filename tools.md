@@ -33,6 +33,7 @@
 
 
     students = students.astype({"grade":int})
+    df["age_bucket"] = pd.to_numeric(df["age_bucket"], errors='coerce').astype(int)
 
 
     products["quantity"].fillna(0,inplace = True)
