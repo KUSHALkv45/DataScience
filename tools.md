@@ -64,5 +64,17 @@
 
 
     ★★★
-    df["avg_salary"] = df.groupby("department")["salary"].transform("mean") 
+    df["avg_salary"] = df.groupby("department")["salary"].transform("mean")
+
+
+    df["rank"] = df.groupby("month")["amt"].rank(method = "min",ascending = False)
+
+    rank() method	                                                                     Tie handling	                                                100, 90, 90, 80
+    average (default)	                                                                 Tied values get the average of their ranks	                    1, 2.5, 2.5, 4
+    min	                                                                                 Tied values get the best (smallest) rank	                    1, 2, 2, 4
+    max	                                                                                 Tied values get the worst (largest) rank	                    1, 3, 3, 4
+    first	                                                                             Ranked by order of appearance	                                1, 2, 3, 4
+    dense	                                                                             Like min, but no gaps                                          1, 2, 2, 3
+
+    df.loc[df["rank"] == 1][["month","description","amt"]].sort_values(by = "month")
 ```
