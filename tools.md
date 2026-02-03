@@ -77,4 +77,7 @@
     dense	                        Like min, but no gaps                                           1, 2, 2, 3
 
     df.loc[df["rank"] == 1][["month","description","amt"]].sort_values(by = "month")
+
+
+    running sum : df["running_sum"] = df.groupby("id")["col1"].cumsum()
 ```
