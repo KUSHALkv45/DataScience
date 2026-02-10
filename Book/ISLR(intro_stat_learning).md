@@ -17,9 +17,7 @@ If you deeply understand this chapter, *everything else in ML starts to feel log
 
 The book defines *all supervised learning* using one equation:
 
-[
-Y = f(X) + \varepsilon
-]
+$$Y = f(X) + \varepsilon$$
 
 Where:
 
