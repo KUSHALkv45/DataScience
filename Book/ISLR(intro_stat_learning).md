@@ -133,9 +133,7 @@ Two major families of methods.
 
 Assume a form for f:
 
-[
-f(X) = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p
-]
+- $$f(X) = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p$$
 
 ### Advantages
 
