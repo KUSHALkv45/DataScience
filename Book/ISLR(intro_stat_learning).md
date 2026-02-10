@@ -306,9 +306,7 @@ This kills naive ML thinking.
 
 ## 7.2 Mean Squared Error (Regression)
 
-[
-\text{MSE} = \frac{1}{n} \sum (y_i - \hat{y}_i)^2
-]
+- $$\text{MSE} = \frac{1}{n} \sum (y_i - \hat{y}_i)^2$$
 
 Why square?
 
@@ -323,12 +321,7 @@ This is the **central theoretical idea** of ML.
 
 ### Decomposition
 
-[
-\text{Test Error} =
-\text{Bias}^2 +
-\text{Variance} +
-\text{Irreducible Error}
-]
+- $$\text{Test Error} =\text{Bias}^2 +\text{Variance} +\text{Irreducible Error}$$
 
 ---
 
@@ -374,9 +367,7 @@ This concept explains:
 ### Bayes Classifier (ideal but unachievable)
 
 Assign class with highest true probability:
-[
-P(Y = k | X = x)
-]
+- $$P(Y = k | X = x)$$
 
 This gives **Bayes error rate**, the lowest possible error.
 
