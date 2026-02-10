@@ -78,6 +78,9 @@
 
     df.loc[df["rank"] == 1][["month","description","amt"]].sort_values(by = "month")
 
-
+    ★
     running sum : df["running_sum"] = df.groupby("id")["col1"].cumsum()
+
+    ★
+    df_sorted['row_number_in_group'] = df_sorted.groupby('Group').cumcount() + 1  
 ```
