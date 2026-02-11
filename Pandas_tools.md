@@ -89,5 +89,8 @@
     df["col"].dt.strftime("%Y-%M")
 
     ★ LAG / LEAD
-    df[col].shift(p) p- +ve means lag and -ve means lead 
+    df[col].shift(p) p- +ve means lag and -ve means lead
+
+    ★ percentage change 
+    .pct_change()*100  - compares with prev row
 ```
