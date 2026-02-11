@@ -86,5 +86,8 @@
 
     ★ Date Formating
     strftime(format)
-    df["col"].dt.strftime("%Y-%M") 
+    df["col"].dt.strftime("%Y-%M")
+
+    ★ LAG / LEAD
+    df[col].shift(p) p- +ve means lag and -ve means lead 
 ```
