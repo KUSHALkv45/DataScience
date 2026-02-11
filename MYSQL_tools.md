@@ -4,3 +4,6 @@
 
 # lag
 - LAG(expression, offset, default_value) OVER ([PARTITION BY partition_column, ...]ORDER BY order_column [ASC|DESC])
+
+# date_format
+- date_format(date , 'expression') , expression - %Y , %y , %M , %m , %D , %d
