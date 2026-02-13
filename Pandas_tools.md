@@ -93,4 +93,7 @@
 
     ★ percentage change 
     .pct_change()*100  - compares with prev row
+
+    ★ to subtract / add from datetime 
+    df["req"] = df["date_visited"] - pd.to_timedelta(df["row_num"], unit="D")
 ```
