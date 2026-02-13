@@ -44,7 +44,11 @@
     df1 = pd.concat([df1,df2],axis = 0) , # axis = 1 -> concats horizontally i.e column wise
 
 
-     ans = weather.pivot(index = "month",columns = "city",values = "temperature")
+    ans = weather.pivot(index = "month",columns = "city",values = "temperature")
+    df = ms_user_dimension.merge(ms_acc_dimension)
+    df = df.merge(ms_download_facts)
+    df = df.pivot_table(index = "date",columns = "paying_customer",values = "downloads",aggfunc = "sum").reset_index()
+
     # month_order = ["January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December"]
     # ans = ans.reindex(month_order)   - returns nulls for empty months
     return ans
