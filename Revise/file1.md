@@ -1,6 +1,6 @@
 # MYSQL
 
-- indexes:
+# indexes:
 ```
 CREATE INDEX index_name
 ON table_name (column,…);
@@ -11,8 +11,7 @@ DROP INDEX index_name;
 CREATE UNIQUE INDEX index_name 
 ON table_name (column,…);
 ```
-
-- views
+# views
 ```
 CREATE VIEW [IF NOT EXISTS] view_name 
 AS Select query ;
@@ -24,8 +23,8 @@ select_statement;
 DROP VIEW [IF EXISTS] view1, view2, …;
 ```
 
-- joins
---
+# joins
+
 ![All Joins](joinsVenn.png)
 
 
