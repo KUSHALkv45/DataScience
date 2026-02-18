@@ -1,5 +1,29 @@
 # MYSQL
 
+# case statment 
+```
+select
+case
+when cond1 then result1
+when cond2 then result2
+.
+...
+else resultlast   end as NewColumn
+from tableName
+
+or use if statements
+select if(cond1,result1,if(cond2,result2,..resultlast)) as NewColumn
+
+ex :
+select 
+case 
+when salary % 3 = 1 then "t1"
+when salary % 3 = 1  then "t2"
+else "t3" end as user_type
+
+select
+if(salary % 3 = 0,"t3",if(salary % 2 = 0,"t2" , "te")) as user_Type
+```
 # indexes:
 ```
 CREATE INDEX index_name
