@@ -80,4 +80,45 @@ WHERE column RLIKE ‘regular_expression’;
 
 ```
 
+# Window Functions
+```
+LAG(column, offset, default) 
+OVER (PARTITION BY ... ORDER BY ...)
+
+LEAD(column, offset, default) 
+OVER (PARTITION BY ... ORDER BY ...)
+
+SUM(column) OVER (
+  PARTITION BY ...
+  ORDER BY ...
+  ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+)
+SUM(amount) OVER (
+  PARTITION BY user_id
+  ORDER BY order_date
+  ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+)
+SUM(amount) OVER (
+  ORDER BY order_date
+  ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING
+)
+
+ROW_NUMBER() OVER (
+  PARTITION BY ...
+  ORDER BY ...
+)
+
+
+RANK() OVER (
+  PARTITION BY ...
+  ORDER BY ...
+)
+
+DENSE_RANK() OVER (
+  PARTITION BY ...
+  ORDER BY ...
+)
+
+
+```
 
