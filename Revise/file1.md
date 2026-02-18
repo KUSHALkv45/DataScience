@@ -25,6 +25,7 @@ DROP VIEW [IF EXISTS] view1, view2, …;
 ```
 
 - joins
+--
 ![All Joins](joinsVenn.png)
 
 
