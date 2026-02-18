@@ -32,12 +32,16 @@ DROP VIEW [IF EXISTS] view1, view2, …;
 ```
 LIKE and RLIKE clauses are used to search desired records from the table.
 
-The SQL LIKE clause compares a value to other values that are similar using wildcard operators. With the LIKE operator, there are two wildcards that can be used.
+The SQL LIKE clause compares a value to other values that are similar using wildcard operators.
+With the LIKE operator, there are two wildcards that can be used.
 
 The percentage sign (%)
-The underscore (_) 
-The % sign can be used to indicate zero, one, or more characters. A single number or letter is represented by the underscore. These symbols can be mixed and matched.
-The syntax for LIKE clause
+The underscore (_)
+
+The % sign can be used to indicate zero, one, or more characters. A single number or letter is represented by the underscore.
+These symbols can be mixed and matched.
+
+The syntax for LIKE clause:
 SELECT select_list
 FROM table_name
 WHERE column LIKE ‘%pattern%’ (or ‘_ABC’);
